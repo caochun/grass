@@ -1,6 +1,6 @@
 package info.nemoworks.grass;
 
-import info.nemoworks.grass.meta.GClass;
+import info.nemoworks.grass.meta.GType;
 import info.nemoworks.grass.storage.arcadedb.ArcadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -21,7 +21,7 @@ public class GrassApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        arcadeRepository.saveClass(GClass.builder().name("abc1").build());
+        arcadeRepository.saveClass(GType.builder().name("abc1").build());
         arcadeRepository.getClass("abc1");
     }
 }

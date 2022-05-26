@@ -2,7 +2,7 @@ package info.nemoworks.grass.storage.arcadedb;
 
 import com.arcadedb.database.Database;
 import com.arcadedb.schema.VertexType;
-import info.nemoworks.grass.meta.GClass;
+import info.nemoworks.grass.meta.GType;
 import info.nemoworks.grass.storage.GrassRepository;
 import info.nemoworks.grass.storage.exception.ClassAlreadyExistsException;
 import info.nemoworks.grass.storage.exception.NoSuchClassException;
@@ -24,16 +24,17 @@ public class ArcadeRepository implements GrassRepository {
     }
 
     @Override
-    public boolean saveClass(GClass gClass) throws ClassAlreadyExistsException {
+    public boolean saveClass(GType gType) throws ClassAlreadyExistsException {
 
-        if (db.getSchema().existsType(gClass.getName()))
+        if (db.getSchema().existsType(gType.getName()))
             throw new ClassAlreadyExistsException();
 
         try {
             db.begin();
-            VertexType vertexType = db.getSchema().createVertexType(gClass.getName());
+            VertexType vertexType = db.getSchema().createVertexType(gType.getName());
+
             if (!vertexType.existsProperty("class"))
-                vertexType.createProperty("class", gClass.getClass());
+                vertexType.createProperty("class", gType.getClass());
             db.commit();
 
             return true;
@@ -45,13 +46,13 @@ public class ArcadeRepository implements GrassRepository {
     }
 
     @Override
-    public GClass getClass(String name) throws NoSuchClassException {
+    public GType getClass(String name) throws NoSuchClassException {
 
         if (!db.getSchema().existsType(name))
             throw new NoSuchClassException();
 
         VertexType vertexType = db.getSchema().getOrCreateVertexType(name);
-        return GClass.builder().build();
+        return GType.builder().build();
 
     }
 }

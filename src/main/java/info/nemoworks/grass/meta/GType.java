@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.util.List;
 
 @Builder
-public class GClass {
+public class GType {
 
     @Getter
     private String name;
