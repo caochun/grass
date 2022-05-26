@@ -6,6 +6,7 @@ import info.nemoworks.grass.meta.GType;
 import info.nemoworks.grass.storage.GrassRepository;
 import info.nemoworks.grass.storage.exception.ClassAlreadyExistsException;
 import info.nemoworks.grass.storage.exception.NoSuchClassException;
+import org.eclipse.emf.ecore.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -47,6 +48,19 @@ public class ArcadeRepository implements GrassRepository {
 
     @Override
     public GType getClass(String name) throws NoSuchClassException {
+
+        EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
+        ePackage.setName("library");
+        ePackage.setNsPrefix("library");
+        ePackage.setNsURI("http://library/1.0");
+        EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+        eClass.setName("Book");
+        EAttribute eAttr = EcoreFactory.eINSTANCE.createEAttribute();
+        eAttr.setName("pages");
+        eAttr.setEType(EcorePackage.Literals.EINT);
+        eClass.getEStructuralFeatures().add(eAttr);
+        ePackage.getEClassifiers().add(eClass);
+        EReference eReference = EcoreFactory.eINSTANCE.createEReference();
 
         if (!db.getSchema().existsType(name))
             throw new NoSuchClassException();
