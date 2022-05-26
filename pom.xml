@@ -14,7 +14,7 @@
     <name>grass</name>
     <description>Gr(aph Cl)ass</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <arcadedb.version>21.10.1</arcadedb.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
         <ecore.version>2.26.0</ecore.version>
@@ -46,6 +46,14 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.common -->
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.common</artifactId>
+            <version>2.24.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

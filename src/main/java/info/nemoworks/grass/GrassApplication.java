@@ -1,43 +1,51 @@
 package info.nemoworks.grass;
 
-import info.nemoworks.grass.storage.arcadedb.ArcadeRepository;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
+import java.util.Collections;
+
 @SpringBootApplication
-public class GrassApplication implements ApplicationRunner {
+public class GrassApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GrassApplication.class, args);
-    }
-
-    @Autowired
-    public ArcadeRepository arcadeRepository;
-
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
+        // Create a resource set.
+        EcorePackage.eINSTANCE.eClass();
 
         ResourceSet resourceSet = new ResourceSetImpl();
-        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-//        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
-        EcorePackage ecorePackage = EcorePackage.eINSTANCE;
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 
-        URI uri = URI.createFileURI("src/main/resources/bowling.ecore");
+        // Register the default resource factory -- only needed for stand-alone!
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
+        // Register the package -- only needed for stand-alone!
+//        EcorePackage ecorePackage = EcorePackage.eINSTANCE;
+        final ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(EPackage.Registry.INSTANCE);
+        resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 
-        Resource myMetaModel = resourceSet.getResource(uri, true);
-//        EPackage univEPackage = (EPackage) myMetaModel.getContents().get(0);
-        System.out.println(myMetaModel);
+        // Get the URI of the model file.
+        URI fileURI = URI.createFileURI("/Users/chun/Downloads/bowling.ecore");
+
+        // Demand load the resource for this file.
+        Resource resource = resourceSet.getResource(fileURI, true);
+
+
+        EPackage ecorePackage = (EPackage) resource.getContents().get(0);
+
 
     }
+
+
 }
