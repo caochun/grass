@@ -18,14 +18,13 @@
         <arcadedb.version>21.10.1</arcadedb.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
         <ecore.version>2.26.0</ecore.version>
-        <ecore-xmi.version>2.1.0</ecore-xmi.version>
-
+        <ecore-xmi.version>2.16.0</ecore-xmi.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.eclipse.emf</groupId>
-                <artifactId>ecore-xmi</artifactId>
+                <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
                 <version>${ecore-xmi.version}</version>
             </dependency>
             <dependency>
@@ -46,14 +45,6 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.common -->
-        <dependency>
-            <groupId>org.eclipse.emf</groupId>
-            <artifactId>org.eclipse.emf.common</artifactId>
-            <version>2.24.0</version>
-        </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -64,7 +55,7 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.emf</groupId>
-            <artifactId>ecore-xmi</artifactId>
+            <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
