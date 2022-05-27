@@ -18,14 +18,15 @@
         <arcadedb.version>21.10.1</arcadedb.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
         <ecore.version>2.26.0</ecore.version>
-        <ecore-xmi.version>2.16.0</ecore-xmi.version>
+        <ecore.xmi.version>2.16.0</ecore.xmi.version>
+        <emfjson.jackson.version>2.0.0</emfjson.jackson.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.eclipse.emf</groupId>
                 <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-                <version>${ecore-xmi.version}</version>
+                <version>${ecore.xmi.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.arcadedb</groupId>
@@ -42,9 +43,15 @@
                 <artifactId>org.eclipse.emf.ecore</artifactId>
                 <version>${ecore.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.eclipse.emfcloud</groupId>
+                <artifactId>emfjson-jackson</artifactId>
+                <version>${emfjson.jackson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -52,6 +59,10 @@
         <dependency>
             <groupId>org.eclipse.emf</groupId>
             <artifactId>org.eclipse.emf.ecore</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.emfcloud</groupId>
+            <artifactId>emfjson-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.emf</groupId>
