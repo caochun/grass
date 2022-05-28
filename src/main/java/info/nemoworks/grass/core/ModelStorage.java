@@ -1,4 +1,4 @@
-package info.nemoworks.grass.storage;
+package info.nemoworks.grass.core;
 
 import info.nemoworks.grass.core.GObject;
 

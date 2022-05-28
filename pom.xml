@@ -15,7 +15,7 @@
     <description>Gr(aph Cl)ass</description>
     <properties>
         <java.version>11</java.version>
-        <arcadedb.version>21.10.1</arcadedb.version>
+        <arcadedb.version>22.2.1</arcadedb.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
         <ecore.version>2.26.0</ecore.version>
         <ecore.xmi.version>2.16.0</ecore.xmi.version>

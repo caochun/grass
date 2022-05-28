@@ -9,6 +9,7 @@ import com.arcadedb.schema.Schema;
 import com.arcadedb.schema.Type;
 import com.arcadedb.schema.VertexType;
 import info.nemoworks.grass.core.GObject;
+import info.nemoworks.grass.core.ModelStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,6 @@ public class ArcadeStorage implements ModelStorage {
         try {
             db.begin();
 
-
             try {
                 db.getSchema().getType(gObject.getClassName());
             } catch (Exception e) {
@@ -42,9 +42,10 @@ public class ArcadeStorage implements ModelStorage {
 
             MutableVertex vertex = db.newVertex(gObject.getClassName()).save();
 
+
             gObject.remove("_RID");
 
-            vertex.set(gObject);
+            vertex.set(gObject).save();
             gObject.put("_RID",vertex.getIdentity().toString());
 
             db.commit();

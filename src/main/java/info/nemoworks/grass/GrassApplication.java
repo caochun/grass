@@ -2,7 +2,7 @@ package info.nemoworks.grass;
 
 import info.nemoworks.grass.core.GMetaModel;
 import info.nemoworks.grass.core.GObject;
-import info.nemoworks.grass.storage.ModelStorage;
+import info.nemoworks.grass.core.ModelStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
