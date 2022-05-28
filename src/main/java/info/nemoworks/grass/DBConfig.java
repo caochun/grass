@@ -3,6 +3,7 @@ package info.nemoworks.grass;
 import com.arcadedb.database.Database;
 import com.arcadedb.database.DatabaseFactory;
 import info.nemoworks.grass.core.GMetaModel;
+import info.nemoworks.grass.storage.ArcadeStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

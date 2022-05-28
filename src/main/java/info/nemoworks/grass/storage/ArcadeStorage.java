@@ -5,11 +5,13 @@ import com.arcadedb.database.RID;
 import com.arcadedb.graph.MutableVertex;
 import com.arcadedb.graph.Vertex;
 import com.arcadedb.index.IndexCursor;
+import com.arcadedb.schema.EdgeType;
 import com.arcadedb.schema.Schema;
 import com.arcadedb.schema.Type;
 import com.arcadedb.schema.VertexType;
 import info.nemoworks.grass.core.GObject;
 import info.nemoworks.grass.core.ModelStorage;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,12 +43,9 @@ public class ArcadeStorage implements ModelStorage {
             }
 
             MutableVertex vertex = db.newVertex(gObject.getClassName()).save();
-
-
-            gObject.remove("_RID");
+            gObject.put("_RID", vertex.getIdentity());
 
             vertex.set(gObject).save();
-            gObject.put("_RID",vertex.getIdentity().toString());
 
             db.commit();
             return true;
@@ -59,7 +58,7 @@ public class ArcadeStorage implements ModelStorage {
 
     @Override
     public GObject get(String className, String id) {
-        IndexCursor indexCursor = db.lookupByKey(className, "_id", id);
+        IndexCursor indexCursor = db.lookupByKey(className, new String[]{"_id"}, new String[]{id});
         if (indexCursor.hasNext()) {
             return GObject.fromMap(className, indexCursor.next().asVertex().toMap());
         }
@@ -67,7 +66,7 @@ public class ArcadeStorage implements ModelStorage {
         return null;
     }
 
-    private Vertex loadVertex(GObject gObject) {
+    private Vertex loadVertex(@NotNull GObject gObject) {
         if (gObject.get("_RID") != null) {
             return db.lookupByRID((RID) (gObject.get("_RID")), true).asVertex();
         } else {
@@ -77,6 +76,7 @@ public class ArcadeStorage implements ModelStorage {
 
     @Override
     public boolean addRelation(GObject from, GObject to, String relation) {
+
         Vertex vFrom = loadVertex(from);
         Vertex vTo = loadVertex(to);
 
@@ -84,10 +84,22 @@ public class ArcadeStorage implements ModelStorage {
             return false;
         }
 
-        vFrom.newEdge(relation, vTo, false);
+        try {
+            db.begin();
 
-        return true;
+            try {
+                db.getSchema().getType(relation);
+            } catch (Exception e) {
+                EdgeType edgeType = db.getSchema().getOrCreateEdgeType(relation);
+            }
 
+            vFrom.newEdge(relation, vTo, false);
 
+            db.commit();
+            return true;
+        } catch (Exception e) {
+            db.rollback();
+        }
+        return false;
     }
 }
