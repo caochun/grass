@@ -1,4 +1,4 @@
-package info.nemoworks.grass.storage.exception;
+package info.nemoworks.grass.core.exception;
 
 public class NoSuchClassException extends Exception{
 }

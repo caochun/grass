@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GModel {
+public class GMetaModel {
 
     private EPackage ePackage;
     private Resource resource;
@@ -32,7 +32,7 @@ public class GModel {
         return mapper;
     }
 
-    public GModel(String modelUri, String modelNs) throws Exception {
+    public GMetaModel(String modelUri, String modelNs) throws Exception {
 
         ResourceSet resourceSet = new ResourceSetImpl();
 
