@@ -41,8 +41,12 @@ public class ArcadeStorage implements ModelStorage {
             }
 
             MutableVertex vertex = db.newVertex(gObject.getClassName()).save();
-            gObject.put("_RID", vertex.getIdentity());
+
+            gObject.remove("_RID");
+
             vertex.set(gObject);
+            gObject.put("_RID",vertex.getIdentity().toString());
+
             db.commit();
             return true;
         } catch (Exception e) {
