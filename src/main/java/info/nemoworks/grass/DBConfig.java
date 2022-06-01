@@ -2,8 +2,8 @@ package info.nemoworks.grass;
 
 import com.arcadedb.database.Database;
 import com.arcadedb.database.DatabaseFactory;
-import info.nemoworks.grass.core.GMetaModel;
-import info.nemoworks.grass.storage.ArcadeStorage;
+import info.nemoworks.grass.core.GMeta;
+import info.nemoworks.grass.core.GModelFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,19 +25,12 @@ public class DBConfig {
     }
 
     @Bean
-    public GMetaModel model(@Autowired String modelUri, @Autowired String modelNs ) throws Exception {
-
-        return new GMetaModel(modelUri,modelNs);
-
+    public GMeta model() throws Exception {
+        return new GMeta("src/main/resources/bowling.ecore", "http://org/eclipse/example/bowling");
     }
 
     @Bean
-    public String modelUri(){
-        return "src/main/resources/bowling.ecore";
-    }
-
-    @Bean
-    public String modelNs(){
-        return "http://org/eclipse/example/bowling";
+    public GModelFactory modelFactory(@Autowired GMeta gMeta) {
+        return GModelFactory.getInstance(gMeta);
     }
 }

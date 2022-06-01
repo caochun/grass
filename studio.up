@@ -1,1 +1,1 @@
-docker run --rm -p 2480:2480 -p 2424:2424 -e arcadedb.server.rootPassword=playwithdata -v ./grassdb:/home/arcadedb/databases/grassdb arcadedata/arcadedb:latest
+docker run --rm -p 2480:2480 -p 2424:2424 -e arcadedb.server.rootPassword=playwithdata -v /Users/chun/Develop/grass/grassdb:/home/arcadedb/databases/grassdb arcadedata/arcadedb:latest

@@ -8,5 +8,5 @@ public interface ModelStorage {
 
     public GObject get(String className, String id);
 
-    public boolean addRelation(GObject from, GObject to, String relation);
+    public boolean addRelation(GReference gReference);
 }

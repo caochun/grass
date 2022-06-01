@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GMetaModel {
+public class GMeta {
 
     private EPackage ePackage;
     private Resource resource;
@@ -32,7 +32,7 @@ public class GMetaModel {
         return mapper;
     }
 
-    public GMetaModel(String modelUri, String modelNs) throws Exception {
+    public GMeta(String modelUri, String modelNs) throws Exception {
 
         ResourceSet resourceSet = new ResourceSetImpl();
 
@@ -94,7 +94,7 @@ public class GMetaModel {
         getMapper().registerModule(module);
         JsonResourceFactory factory = new JsonResourceFactory(getMapper());
 
-        return getMapper().writeValueAsString(resource);
+        return getMapper().writerWithDefaultPrettyPrinter().writeValueAsString(resource);
 
     }
 

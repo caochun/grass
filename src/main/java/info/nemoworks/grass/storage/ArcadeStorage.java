@@ -10,6 +10,7 @@ import com.arcadedb.schema.Schema;
 import com.arcadedb.schema.Type;
 import com.arcadedb.schema.VertexType;
 import info.nemoworks.grass.core.GObject;
+import info.nemoworks.grass.core.GReference;
 import info.nemoworks.grass.core.ModelStorage;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,10 +76,10 @@ public class ArcadeStorage implements ModelStorage {
     }
 
     @Override
-    public boolean addRelation(GObject from, GObject to, String relation) {
+    public boolean addRelation(GReference reference) {
 
-        Vertex vFrom = loadVertex(from);
-        Vertex vTo = loadVertex(to);
+        Vertex vFrom = loadVertex(reference.getFrom());
+        Vertex vTo = loadVertex(reference.getTo());
 
         if ((vFrom == null) || (vTo == null)) {
             return false;
@@ -88,12 +89,12 @@ public class ArcadeStorage implements ModelStorage {
             db.begin();
 
             try {
-                db.getSchema().getType(relation);
+                db.getSchema().getType(reference.getRefName());
             } catch (Exception e) {
-                EdgeType edgeType = db.getSchema().getOrCreateEdgeType(relation);
+                EdgeType edgeType = db.getSchema().getOrCreateEdgeType(reference.getRefName());
             }
 
-            vFrom.newEdge(relation, vTo, false);
+            vFrom.newEdge(reference.getRefName(), vTo, false);
 
             db.commit();
             return true;
