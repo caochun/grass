@@ -1,0 +1,11 @@
+type Person {
+    name: ID!
+    age: Int
+    pets: [Pet] @relation(name:"HAS_PET")
+}
+
+type Pet{
+    name :ID!
+    type :String
+}
+

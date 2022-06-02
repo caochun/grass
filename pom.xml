@@ -21,6 +21,9 @@
         <ecore.xmi.version>2.16.0</ecore.xmi.version>
         <emfjson.jackson.version>2.0.0</emfjson.jackson.version>
         <neo4j.version>4.4.7</neo4j.version>
+        <guava.version>31.0.1-jre</guava.version>
+        <neo4j-graphql.version>1.5.0</neo4j-graphql.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -53,6 +56,16 @@
                 <groupId>org.neo4j</groupId>
                 <artifactId>neo4j</artifactId>
                 <version>${neo4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-graphql-java</artifactId>
+                <version>${neo4j-graphql.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -95,7 +108,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>17.0.0</version>
+            <version>23.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -106,6 +119,16 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java</artifactId>
+            <version>16.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-graphql-java</artifactId>
         </dependency>
     </dependencies>
 
