@@ -89,12 +89,21 @@ public class GMeta {
 //        return this.getClasses().stream().flatMap(eClass -> Stream.of(eClass.getEAllReferences())).;
 //    }
 
-    public String toJson() throws JsonProcessingException {
+    public String toJsonString() throws JsonProcessingException {
         EMFModule module = new EMFModule();
         getMapper().registerModule(module);
         JsonResourceFactory factory = new JsonResourceFactory(getMapper());
 
         return getMapper().writerWithDefaultPrettyPrinter().writeValueAsString(resource);
+
+    }
+
+    public JsonNode toJson() throws JsonProcessingException {
+        EMFModule module = new EMFModule();
+        getMapper().registerModule(module);
+        JsonResourceFactory factory = new JsonResourceFactory(getMapper());
+
+        return getMapper().valueToTree(resource);
 
     }
 

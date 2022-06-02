@@ -1,9 +1,12 @@
 package info.nemoworks.grass.core;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import info.nemoworks.grass.core.exception.InvalidReferenceException;
 import info.nemoworks.grass.core.exception.NoSuchClassException;
 import org.eclipse.emf.ecore.EReference;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class GModelFactory {
@@ -43,5 +46,15 @@ public class GModelFactory {
 
         return new GReference(refName, from, to);
 
+    }
+
+    public JsonNode getClassSchema(String className) throws JsonProcessingException {
+        Iterator<JsonNode> i  = this.gMeta.toJson().get("eClassifiers").iterator();
+        while (i.hasNext()){
+            JsonNode node = i.next();
+            if (node.get("name").asText().equals(className))
+                return node;
+        }
+        return null;
     }
 }

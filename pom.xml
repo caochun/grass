@@ -20,6 +20,8 @@
         <ecore.version>2.26.0</ecore.version>
         <ecore.xmi.version>2.16.0</ecore.xmi.version>
         <emfjson.jackson.version>2.0.0</emfjson.jackson.version>
+        <neo4j.version>4.4.7</neo4j.version>
+        <grahpql-java.version>18.1</grahpql-java.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -47,6 +49,16 @@
                 <groupId>org.eclipse.emfcloud</groupId>
                 <artifactId>emfjson-jackson</artifactId>
                 <version>${emfjson.jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j</artifactId>
+                <version>${neo4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.graphql-java</groupId>
+                <artifactId>graphql-java</artifactId>
+                <version>${grahpql-java.versiong}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -91,6 +103,14 @@
             <artifactId>annotations</artifactId>
             <version>17.0.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
         </dependency>
     </dependencies>
 

@@ -12,6 +12,7 @@ public class GrassApplication implements ApplicationRunner {
 
     public static void main(String[] args) throws Exception {
 
+
         SpringApplication.run(GrassApplication.class, args);
 
     }
@@ -40,7 +41,10 @@ public class GrassApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        System.out.println(model.toJsonString());
         System.out.println(model.getClassNames());
+
+        System.out.println(gModelFactory.getClassSchema("Player").toPrettyString());
 
         System.out.println(model.getReferenceNames("Game"));
 
