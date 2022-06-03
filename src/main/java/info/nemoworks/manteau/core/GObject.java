@@ -1,4 +1,4 @@
-package info.nemoworks.grass.core;
+package info.nemoworks.manteau.core;
 
 import java.util.HashMap;
 import java.util.Map;

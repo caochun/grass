@@ -1,9 +1,9 @@
-package info.nemoworks.grass.core;
+package info.nemoworks.manteau.core;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import info.nemoworks.grass.core.exception.InvalidReferenceException;
-import info.nemoworks.grass.core.exception.NoSuchClassException;
+import info.nemoworks.manteau.core.exception.InvalidReferenceException;
+import info.nemoworks.manteau.core.exception.NoSuchClassException;
 import org.eclipse.emf.ecore.EReference;
 
 import java.util.Iterator;

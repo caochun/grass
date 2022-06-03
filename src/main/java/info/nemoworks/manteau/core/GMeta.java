@@ -1,4 +1,4 @@
-package info.nemoworks.grass.core;
+package info.nemoworks.manteau.core;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -54,6 +54,7 @@ public class GMeta {
         this.resource = resource;
 
         this.ePackage = (EPackage) resource.getContents().get(0);
+
 
         if (this.ePackage == null) {
             throw new Exception("Model initialization fails.");

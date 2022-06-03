@@ -1,6 +1,4 @@
-package info.nemoworks.grass.core;
-
-import info.nemoworks.grass.core.GObject;
+package info.nemoworks.manteau.core;
 
 public interface ModelStorage {
 
