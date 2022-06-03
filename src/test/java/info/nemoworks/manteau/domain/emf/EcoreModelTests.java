@@ -8,7 +8,6 @@ import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@RunWith(@RunWith(AnnotationProcessorTestRunner.class).class)
 public class EcoreModelTests {
     @Test
     public void testLoadEcoreModel() throws IllegalModelException {

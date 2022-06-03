@@ -5,9 +5,11 @@ import lombok.Data;
 @Data
 public class MReference {
     private String refName;
-    private DIRECTION direction;
+    private DIRECTION direction = DIRECTION.OUT;
 
-    private MClass referee;
+    private boolean many;
+
+    private String referee;
 
     public static enum DIRECTION {
         IN, OUT

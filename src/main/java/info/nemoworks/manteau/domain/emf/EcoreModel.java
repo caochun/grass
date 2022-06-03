@@ -55,7 +55,7 @@ public class EcoreModel implements MModel {
 
     @Override
     public List<MClass> getClasses() {
-        EClassMapper mapper = EClassMapper.INSTANCE;
+        ECoreMapper mapper = ECoreMapper.INSTANCE;
         EList<EClassifier> eClassifiers = this.ePackage.getEClassifiers();
         return eClassifiers.stream().filter(c -> c instanceof EClass).map(c -> mapper.toMclass((EClass) c)).collect(Collectors.toList());
     }
