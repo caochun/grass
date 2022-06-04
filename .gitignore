@@ -1,4 +1,5 @@
-grassdb/**
+arcadedb/**
+neo4jdb/**
 
 HELP.md
 target/
