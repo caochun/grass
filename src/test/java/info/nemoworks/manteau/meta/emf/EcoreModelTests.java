@@ -1,7 +1,7 @@
-package info.nemoworks.manteau.domain.emf;
+package info.nemoworks.manteau.meta.emf;
 
 import com.google.common.io.Resources;
-import info.nemoworks.manteau.domain.IllegalModelException;
+import info.nemoworks.manteau.meta.IllegalModelException;
 import org.junit.jupiter.api.Test;
 
 import java.net.URL;

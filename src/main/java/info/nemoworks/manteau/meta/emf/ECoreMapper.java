@@ -1,8 +1,8 @@
-package info.nemoworks.manteau.domain.emf;
+package info.nemoworks.manteau.meta.emf;
 
-import info.nemoworks.manteau.domain.MAttribute;
-import info.nemoworks.manteau.domain.MClass;
-import info.nemoworks.manteau.domain.MReference;
+import info.nemoworks.manteau.meta.MAttribute;
+import info.nemoworks.manteau.meta.MClass;
+import info.nemoworks.manteau.meta.MReference;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;

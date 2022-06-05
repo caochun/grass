@@ -1,14 +1,13 @@
-package info.nemoworks.manteau.domain.graphql;
+package info.nemoworks.manteau.meta.graphql;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import graphql.language.ObjectTypeDefinition;
-import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
-import info.nemoworks.manteau.domain.IllegalModelException;
-import info.nemoworks.manteau.domain.MClass;
-import info.nemoworks.manteau.domain.MModel;
+import info.nemoworks.manteau.meta.IllegalModelException;
+import info.nemoworks.manteau.meta.MClass;
+import info.nemoworks.manteau.meta.MModel;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package info.nemoworks.manteau.domain;
+package info.nemoworks.manteau.meta;
 
 import java.net.URL;
 import java.util.List;

@@ -1,4 +1,4 @@
-package info.nemoworks.manteau.domain;
+package info.nemoworks.manteau.meta;
 
 import lombok.Data;
 

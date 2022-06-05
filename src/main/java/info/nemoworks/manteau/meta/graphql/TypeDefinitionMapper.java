@@ -1,12 +1,8 @@
-package info.nemoworks.manteau.domain.graphql;
+package info.nemoworks.manteau.meta.graphql;
 
-import graphql.language.FieldDefinition;
 import graphql.language.ObjectTypeDefinition;
-import graphql.language.TypeDefinition;
-import info.nemoworks.manteau.domain.MAttribute;
-import info.nemoworks.manteau.domain.MClass;
+import info.nemoworks.manteau.meta.MClass;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 

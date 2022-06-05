@@ -1,0 +1,17 @@
+org :
+  neo4j :
+    driver :
+      uri : bolt://localhost:7687
+      authentication :
+        username : user
+        password : password
+      config :
+        encrypted : true
+database : petclinic
+spring :
+  graphql :
+    schema :
+      printer :
+        enabled : true
+    graphiql :
+      enabled : true

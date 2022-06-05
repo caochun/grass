@@ -1,8 +1,8 @@
-package info.nemoworks.manteau.domain.emf;
+package info.nemoworks.manteau.meta.emf;
 
-import info.nemoworks.manteau.domain.IllegalModelException;
-import info.nemoworks.manteau.domain.MClass;
-import info.nemoworks.manteau.domain.MModel;
+import info.nemoworks.manteau.meta.IllegalModelException;
+import info.nemoworks.manteau.meta.MClass;
+import info.nemoworks.manteau.meta.MModel;
 import lombok.Getter;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
